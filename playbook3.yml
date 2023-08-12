@@ -1,0 +1,8 @@
+---
+- name: Local playbook
+  hosts: localhost
+  tasks:
+  - name: Copy file
+    ansible.builtin.copy:
+      src: demo.txt
+      dest: /tmp/

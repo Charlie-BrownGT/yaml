@@ -1,0 +1,20 @@
+---
+- name: Handlers Playbook
+  hosts: localhost
+  vars:
+    demo_variable: "This is a demo variable"
+  tasks:
+    - name: Write the config
+      ansible.builtin.template:
+        src: config.conf.j2
+        dest: /tmp/config.conf
+      notify:
+      - Call for Aid        
+    - name: Print the config
+      ansible.builtin.debug:
+        msg: "{{ lookup('file', '/tmp/config.conf') }}"
+
+  handlers:
+    - name: Call for Aid
+      ansible.builtin.debug:
+        msg: "Light the beacons!"

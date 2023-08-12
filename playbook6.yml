@@ -1,0 +1,27 @@
+---
+- name: Templates Playbook
+  hosts: localhost
+  vars:
+    demo_variable: false
+  pre_tasks:
+  - name: Print message pre
+    ansible.builtin.debug:
+      msg: Hello    
+  tasks:
+  - when: demo_variable
+    block:
+    - name: Write the config
+      ansible.builtin.template:
+        src: config.conf.j2
+        dest: /tmp/config.conf
+    - name: Print variable
+      ansible.builtin.debug:
+        msg: "demo_variable is {{ demo_variable }}"
+        
+  - name: Print variable again
+    ansible.builtin.debug:
+      msg: "demo_variable is again {{ demo_variable }}"
+  post_tasks:
+    - name: Print message post
+      ansible.builtin.debug:
+        msg: Hello  

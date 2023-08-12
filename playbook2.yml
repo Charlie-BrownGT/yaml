@@ -1,0 +1,15 @@
+---
+- name: Local playbook
+  hosts: localhost
+  tasks:
+  - name: Ping my hosts
+    ansible.builtin.ping:
+  - name: Print message
+    ansible.builtin.debug:
+      msg: Hello world
+  - name: Execute the command in remote shell; stdout goes to the specified file on the remote
+    ansible.builtin.shell: whoami
+    register: whoami_result
+  - name: Print message
+    ansible.builtin.debug:
+      var: whoami_result

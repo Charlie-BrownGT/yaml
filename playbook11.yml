@@ -1,0 +1,8 @@
+---
+- name: Remote playbook
+  hosts: all
+  tasks:
+   - name: Ping that hosts
+     ansible.builtin.ping:
+   - name: ip
+     ansible.builtin.shell: ip a | grep inet

@@ -1,0 +1,17 @@
+---
+- name: Registered variable usage as a loop list
+  hosts: localhost
+  vars:
+    baddemo:
+    - something
+    - other
+  tasks:
+
+    - name: Retrieve the list of home directories
+      ansible.builtin.command: ls /etc
+      register: home_dirs
+
+    - name: Add home dirs to the backup spooler
+      ansible.builtin.debug:
+        msg: '{{ item }}'
+      loop: "{{ baddemo }}"

@@ -1,0 +1,10 @@
+---
+- name: Templates Playbook
+  hosts: localhost
+  vars:
+    demo_variable: "This is a demo variable again"
+  tasks:
+    - name: Write the config
+      ansible.builtin.template:
+        src: config.conf.j2
+        dest: /tmp/config.conf

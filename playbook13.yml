@@ -1,0 +1,6 @@
+---
+- name: Docker playbook
+  hosts: all
+  roles:
+  - geerlingguy.docker
+  - geerlingguy.git

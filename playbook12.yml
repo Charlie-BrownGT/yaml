@@ -1,0 +1,12 @@
+---
+- name: Become playbook
+  hosts: all
+  tasks:
+  - name: Install sl package
+    ansible.builtin.apt:
+      name: sl
+      state: present
+    vars:
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_password: "{{ ansible_password }}"
