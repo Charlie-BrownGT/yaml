@@ -1,0 +1,11 @@
+---
+- name: Update and Install git
+  ansible.builtin.apt: 
+    name: git
+    update_cache: yes
+    state: present
+
+- name: Example clone of a single branch
+  ansible.builtin.git:
+    repo: https://github.com/Charlie-BrownGT/Python.git
+    dest: /srv/Python

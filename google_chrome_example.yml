@@ -1,0 +1,6 @@
+---
+- name: Install thangs with Chocolatey module
+  win_chocolatey:
+    name: google-chrome
+    state: latest
+    source: chocolatey

@@ -1,0 +1,6 @@
+---
+- name: Install Notepad++ with Chocolatey module
+  win_chocolatey:
+    name: notepadplusplus
+    install_args: "/D=C:\Notepad++"
+    state: latest
