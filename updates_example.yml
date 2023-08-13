@@ -1,0 +1,6 @@
+---
+- name: stop win update OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+  ansible.builtin.service:
+    name: wuauserv
+    start mode: auto
+    state: started
