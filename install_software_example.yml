@@ -1,0 +1,11 @@
+---
+- name: Install thangs with Chocolatey module
+  win_chocolatey:
+    name: googlechrome
+    state: latest
+    source: chocolatey
+
+- name: Install IIS (Web-Server only)
+  ansible.windows.win_feature:
+    name: Web-Server
+    state: present
