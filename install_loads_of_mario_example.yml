@@ -1,0 +1,25 @@
+---
+
+- name: Download URL 
+  ansible.builtin.get_url:
+    url: '{{ mario_url }}'
+    dest: /root/mario.zip
+    mode: '4777'
+
+- name: Install a list of packages
+  ansible.builtin.apt:
+    pkg:
+    - unzip
+    - apache2
+    - nodejs
+    - npm
+
+- name: Unzip zip file
+  ansible.builtin.unarchive:
+    src: /root/mario.zip
+    dest: /var/www/html/
+    remote_src: yes
+
+    
+- name: shell
+  ansible.builtin.shell: rm /var/www/html/index.html && cd /var/www/html/mario_js-master/ && npm install && npm start
