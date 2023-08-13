@@ -1,0 +1,24 @@
+---
+
+- name: Download URL 
+  ansible.builtin.get_url:
+    url: '{{ mario_url }}'
+    dest: /root/mario.zip
+    mode: '4777'
+
+- name: Remove "apache" package
+  ansible.builtin.apt:
+    name: apache2
+    state: absent
+
+- name: Install a list of packages
+  ansible.builtin.apt:
+    pkg:
+    - unzip
+    - apache2
+
+- name: Unzip zip file
+  ansible.builtin.unarchive:
+    src: /root/mario.zip
+    dest: /var/www/html/
+    remote_src: yes
