@@ -6,16 +6,17 @@
     dest: /root/mario.zip
     mode: '4777'
 
-- name: Remove "apache" package
-  ansible.builtin.apt:
-    name: apache2
-    state: absent
-
 - name: Install a list of packages
   ansible.builtin.apt:
     pkg:
     - unzip
     - apache2
+    - nodejs
+
+
+- name: shell
+  ansible.builtin.shell: cd /var/www/html/mario_js-master/ && npm install && npm start
+
 
 - name: Unzip zip file
   ansible.builtin.unarchive:
