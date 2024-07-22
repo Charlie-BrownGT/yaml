@@ -1,0 +1,36 @@
+---
+- name: Add a file
+  ansible.builtin.file:
+    path: /srv/foo.txt
+    state: touch
+### its my pretty code
+
+- name: Copy using inline content
+  ansible.builtin.copy:
+    content: 'skippy the mag'
+    dest: /srv/foo.txt
+
+- name: Copy a file to the machine
+  ansible.builtin.copy:
+    src: test.txt
+    dest: /srv/test.txt
+
+- name: Template a file
+  ansible.builtin.template:
+    src: foo.j2
+    dest: /srv/secret.conf
+
+- name: Install non-optional package!
+  ansible.builtin.apt:
+    name: apache2
+    state: latest
+
+- name: Copy a file to the machine
+  ansible.builtin.template:
+    src: test.html
+    dest: /var/www/html/index.html
+
+- name: Copy a css file to the machine
+  ansible.builtin.template:
+    src: web_style_1.css
+    dest: /var/www/html/
